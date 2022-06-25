@@ -10,8 +10,10 @@ RUN go mod download
 
 # Change the directory to cmd/main before building the image
 
-RUN go build -o /go-bookstore .
+WORKDIR /app/cmd/main/
 
-EXPOSE 8000
+RUN go build -o go-bookstore .
 
-CMD ["/app/go-bookstore"]
+EXPOSE 9010
+
+CMD ["/app/cmd/main/go-bookstore"]
